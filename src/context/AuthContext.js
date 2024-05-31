@@ -8,10 +8,15 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 const AuthContext = createContext();
 
 const handleUserData = async (user) => {
+  if (!navigator.onLine) {
+    console.error("Client is offline");
+    return;
+  }
+
   const userRef = doc(db, 'users', user.uid);
   const userSnap = await getDoc(userRef);
   if (!userSnap.exists()) {
-    await setDoc(userRef, { uid: user.uid, email: user.email, progress: {} });
+    await setDoc(userRef, { uid: user.uid, email: user.email, hearts: 5, xp: 0, progress: {} });
   }
 };
 
@@ -26,9 +31,15 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
+        console.log("User is signed in:", user);
         setUser(user);
         await handleUserData(user);
-        navigate('/title');
+        if (window.location.pathname !== '/dashboard') {
+          navigate('/title');
+        }
+      } else {
+        console.log("No user signed in");
+        navigate('/');
       }
       setLoading(false);
     });
