@@ -1,8 +1,8 @@
-// src/pages/Dashboard.js
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase-config';
+import Map from '../components/UI/Map'; // Import the Map component
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -40,7 +40,7 @@ const Dashboard = () => {
         <p>Hearts: {userData.hearts}</p>
         <p>XP: {userData.xp}</p>
       </div>
-      {/* The map and other elements can be added here */}
+      <Map /> {/* Render the Map component */}
     </div>
   );
 };
