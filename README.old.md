@@ -1,6 +1,7 @@
 Project Synopsis
 The project is a mobile quiz app designed to provide endless multiple-choice quizzes on various topics like Python and JavaScript. Users can sign in with Google, GitHub, or Twitter to track their progress and statistics. The app will feature different quiz categories and levels, with aesthetically pleasing interfaces, possibly in a vaporwave style. Users can access hints and explanations for each question, and lives are lost with incorrect answers. There will be a free version with limited lives and a paid version with unlimited lives and additional features.
 
+and it was 
 Project Directory Structure
 plaintext
 Copy code
