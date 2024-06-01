@@ -1,0 +1,70 @@
+{
+    "javascript": {
+      "easy": [
+        {
+          "question": "What is JavaScript?",
+          "options": ["A programming language", "A type of coffee", "A brand", "A database"],
+          "answer": 0,
+          "explanation": "JavaScript is a programming language used for web development."
+        },
+        {
+          "question": "Which company developed JavaScript?",
+          "options": ["Microsoft", "Netscape", "Google", "Apple"],
+          "answer": 1,
+          "explanation": "JavaScript was developed by Netscape."
+        },
+        {
+          "question": "Which of the following is a JavaScript data type?",
+          "options": ["Boolean", "Integer", "Float", "Character"],
+          "answer": 0,
+          "explanation": "Boolean is a JavaScript data type."
+        }
+      ],
+      "medium": [
+        {
+          "question": "Which symbol is used for comments in JavaScript?",
+          "options": ["//", "/*", "#", "<!--"],
+          "answer": 0,
+          "explanation": "// is used for single-line comments in JavaScript."
+        },
+        {
+          "question": "How do you create a function in JavaScript?",
+          "options": ["function myFunction()", "def myFunction()", "create myFunction()", "function:myFunction()"],
+          "answer": 0,
+          "explanation": "Functions in JavaScript are created using the 'function' keyword."
+        },
+        {
+          "question": "What is the correct syntax to refer to an external script called 'script.js'?",
+          "options": ["<script href='script.js'>", "<script name='script.js'>", "<script src='script.js'>", "<script file='script.js'>"],
+          "answer": 2,
+          "explanation": "<script src='script.js'> is the correct way to refer to an external script."
+        }
+      ],
+      "hard": [
+        {
+          "question": "Which of the following is not a reserved word in JavaScript?",
+          "options": ["interface", "throws", "program", "short"],
+          "answer": 2,
+          "explanation": "'program' is not a reserved word in JavaScript."
+        },
+        {
+          "question": "Which method is used to serialize an object into a JSON string in JavaScript?",
+          "options": ["JSON.parse()", "JSON.stringify()", "JSON.objectify()", "JSON.serialize()"],
+          "answer": 1,
+          "explanation": "JSON.stringify() method is used to serialize an object into a JSON string."
+        },
+        {
+          "question": "What is the output of the following code: console.log(typeof NaN);",
+          "options": ["number", "NaN", "undefined", "string"],
+          "answer": 0,
+          "explanation": "In JavaScript, the type of NaN is 'number'."
+        }
+      ]
+    },
+    "python": {
+      "easy": [],
+      "medium": [],
+      "hard": []
+    }
+  }
+  

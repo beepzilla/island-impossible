@@ -37,10 +37,6 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Map</h1>
-      <div>
-        <p>Hearts: {userData.hearts}</p>
-        <p>XP: {userData.xp}</p>
-      </div>
       <Map />
     </div>
   );
