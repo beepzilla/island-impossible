@@ -34,14 +34,11 @@ export const AuthProvider = ({ children }) => {
         console.log("User is signed in:", user);
         setUser(user);
         await handleUserData(user);
-        if (window.location.pathname !== '/dashboard') {
-          navigate('/title');
-        }
+        setLoading(false);
       } else {
         console.log("No user signed in");
-        navigate('/');
+        setLoading(false);
       }
-      setLoading(false);
     });
     return unsubscribe;
   }, [navigate]);

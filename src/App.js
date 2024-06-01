@@ -7,7 +7,7 @@ import Auth from './pages/Auth';
 import TitleScreen from './pages/TitleScreen';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/UI/Navbar';
-import JavaScriptLand from './pages/JavaScriptLand'; // Ensure this matches the file name
+import JavaScriptLand from './pages/JavaScriptLand';
 import './assets/styles/global.css';
 
 const AppContent = () => {
