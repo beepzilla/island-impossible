@@ -1,4 +1,3 @@
-// src/firebase-config.js
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -13,10 +12,9 @@ const firebaseConfig = {
   measurementId: "G-GDHRDMEZC6"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+const db = getFirestore(app);
 
-export { app, auth, db, googleProvider };
+export { auth, googleProvider, db };

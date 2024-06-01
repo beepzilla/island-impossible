@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, googleProvider, db } from '../firebase-config';
+import { auth, googleProvider, db } from '../utils/firebase-config';
 import { signInWithPopup } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 
@@ -32,7 +32,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
-        console.log("User is signed in:", user);
         const userRef = doc(db, 'users', user.uid);
         const userSnap = await getDoc(userRef);
         if (userSnap.exists()) {
@@ -45,7 +44,6 @@ export const AuthProvider = ({ children }) => {
         }
         setLoading(false);
       } else {
-        console.log("No user signed in");
         setLoading(false);
       }
     });
@@ -61,7 +59,7 @@ export const AuthProvider = ({ children }) => {
         }
         return newHearts;
       });
-    }, 36000); // 1 hour in milliseconds
+    }, 3600000); // 1 hour in milliseconds
 
     return () => clearInterval(interval);
   }, [user]);

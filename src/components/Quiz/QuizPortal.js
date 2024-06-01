@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import quizzes from '../data/quizzes.json';
-import { useAuth } from '../context/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import quizzes from '../../assets/data/quizzes.json';
+import { useAuth } from '../../context/AuthContext';
+import Popup from '../common/Popup';
+import Button from '../common/Button';
 
 const QuizPortal = () => {
   const { user, hearts, updateHearts } = useAuth();
@@ -22,7 +24,6 @@ const QuizPortal = () => {
       if (quizzes[category] && quizzes[category][difficulty]) {
         setQuizData(quizzes[category][difficulty]);
       } else {
-        console.error(`Quiz data not found for category: ${category}, difficulty: ${difficulty}`);
         navigate('/dashboard'); // Redirect to dashboard if quiz data is not found
       }
     }
@@ -51,7 +52,6 @@ const QuizPortal = () => {
     if (currentQuestion < quizData.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // Quiz finished
       alert(`Quiz finished! Your score: ${score}/${quizData.length}`);
       navigate('/dashboard');
     }
@@ -60,27 +60,22 @@ const QuizPortal = () => {
   const handleUpgradeClick = () => {
     alert("Upgrade to the premium version for unlimited hearts!");
     setShowUpgradePopup(false);
-    navigate('/dashboard'); // Redirect to dashboard after showing upgrade prompt
+    navigate('/dashboard');
   };
 
   if (!user || quizData.length === 0) {
     return <div>Loading...</div>;
   }
 
-  if (showUpgradePopup) {
-    return (
-      <div>
-        <div className="popup">
-          <p>You don't have enough hearts to play. Upgrade to the premium version for unlimited hearts!</p>
-          <button onClick={handleUpgradeClick}>Upgrade</button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div>
-      <h1>{category} Quiz - {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}</h1>
+      <h1>{category.charAt(0).toUpperCase() + category.slice(1)} Quiz - {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}</h1>
+      {showUpgradePopup && (
+        <Popup>
+          <p>You don't have enough hearts to play. Upgrade to the premium version for unlimited hearts!</p>
+          <Button onClick={handleUpgradeClick}>Upgrade</Button>
+        </Popup>
+      )}
       <div>
         <p>{quizData[currentQuestion].question}</p>
         <div>
@@ -93,7 +88,7 @@ const QuizPortal = () => {
         {showExplanation && (
           <div>
             <p>{quizData[currentQuestion].explanation}</p>
-            <button onClick={handleNextQuestion}>Next</button>
+            <Button onClick={handleNextQuestion}>Next</Button>
           </div>
         )}
       </div>

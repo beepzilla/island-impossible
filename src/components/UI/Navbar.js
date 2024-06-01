@@ -1,33 +1,33 @@
-// src/components/UI/Navbar.js
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import '../../assets/styles/Navbar.css';
 
 const Navbar = () => {
-  const { user, signInWithGoogle } = useAuth();
-  const navigate = useNavigate();
+  const { user, hearts, xp } = useAuth();
 
   return (
-    <div className="navbar">
-      <div className="navbar-content">
+    <nav className="navbar">
+      <div className="navbar-brand">
+        <Link to="/">QuizApp</Link>
+      </div>
+      <div className="navbar-links">
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/docs">Docs</Link>
+        <Link to="/lessons">Lessons</Link>
+      </div>
+      <div className="navbar-user">
         {user ? (
-          <>
-            <span>Signed in as {user.email}</span>
-            <button onClick={() => navigate('/dashboard')}>Home</button>
-          </>
+          <div className="user-info">
+            <span>{user.email}</span>
+            <span>Hearts: {hearts}/5</span>
+            <span>XP: {xp}</span>
+          </div>
         ) : (
-          <button onClick={signInWithGoogle}>Sign in with Google</button>
+          <Link to="/auth">Sign In</Link>
         )}
       </div>
-      <div className="navbar-hamburger">
-        <button onClick={() => document.getElementById('navbar-menu').classList.toggle('show')}>☰</button>
-        <div id="navbar-menu" className="navbar-menu">
-          <button onClick={() => navigate('/dashboard')}>Home Dashboard</button>
-          <button onClick={() => navigate('/docs')}>Docs</button>
-          <button onClick={() => navigate('/lessons')}>Lessons</button>
-        </div>
-      </div>
-    </div>
+    </nav>
   );
 };
 

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase-config';
+import { db } from '../utils/firebase-config';
 import Map from '../components/UI/Map';
 
 const Dashboard = () => {

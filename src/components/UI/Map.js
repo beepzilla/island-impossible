@@ -4,17 +4,15 @@ import { useNavigate } from 'react-router-dom';
 const Map = () => {
   const navigate = useNavigate();
 
-  const handleClick = (e, category) => {
-    e.preventDefault();
-    navigate(`/realm/${category}`);
+  const handleRealmClick = (category, difficulty) => {
+    navigate(`/realm/${category}/${difficulty}`);
   };
 
   return (
-    <div className="map-container">
-      <img src="/path/to/map-image.jpg" alt="Map" className="map-image" />
-      <div className="map-overlay">
-        <button className="map-circle" style={{ top: '50%', left: '50%' }} onClick={(e) => handleClick(e, 'javascript')}></button>
-      </div>
+    <div>
+      <h1>Map</h1>
+      <button onClick={() => handleRealmClick('javascript', 'easy')}>JavaScript Land</button>
+      {/* Add more buttons for different realms */}
     </div>
   );
 };
