@@ -23,7 +23,7 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [hearts, setHearts] = useState(5);
+  const [hearts, setHearts] = useState(0);
   const [xp, setXp] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
         if (userSnap.exists()) {
           const userData = userSnap.data();
           setUser(user);
-          setHearts(userData.hearts || 5);
+          setHearts(userData.hearts !== undefined ? userData.hearts : 5);
           setXp(userData.xp || 0);
         } else {
           await handleUserData(user);
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
         }
         return newHearts;
       });
-    }, 3600000); // 1 hour in milliseconds
+    }, 36000); // 1 hour in milliseconds
 
     return () => clearInterval(interval);
   }, [user]);
